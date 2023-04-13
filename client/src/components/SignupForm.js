@@ -4,14 +4,14 @@ import { useQuery } from '@apollo/client';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-
+import { useNavigate } from 'react-router'
 import Auth from '../utils/auth';
 
 const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-
+  const navigate = useNavigate()
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
@@ -37,12 +37,12 @@ const SignupForm = () => {
       console.error(error);
       setShowAlert(true);
     }
-
     setUserFormData({
       username: '',
       email: '',
       password: '',
     });
+    navigate('/me')
   };
 
   return (

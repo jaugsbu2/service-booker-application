@@ -42,7 +42,7 @@ const AddTicketForm = ({profileId}) => {
       });
       console.log(data)
       if (data) {
-        navigate(0)
+        navigate('/me')
       }
     } catch (e) {
       console.error(e);
