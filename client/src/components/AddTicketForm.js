@@ -4,7 +4,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import Auth from "../utils/auth";
 import {ADD_TICKET} from "../utils/mutations"
 import { useMutation } from "@apollo/client";
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 
 const AddTicketForm = ({profileId}) => {
   const [ticketFormData, setTicketFormData] = useState({
@@ -16,7 +16,10 @@ const AddTicketForm = ({profileId}) => {
   });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const refreshPage = ()=>{
+    window.location.reload();
+ }
   const [addTicket, {error}] = useMutation(ADD_TICKET)
 
 
@@ -42,7 +45,8 @@ const AddTicketForm = ({profileId}) => {
       });
       console.log(data)
       if (data) {
-        navigate('/me')
+        // navigate(0)
+        refreshPage()
       }
     } catch (e) {
       console.error(e);
